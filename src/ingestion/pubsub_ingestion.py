@@ -83,8 +83,8 @@ class NewsGenerator:
         )
         
         return {
-            "event_id": f"evt_{datetime.utcnow().timestamp()}_{random.randint(1000, 9999)}",
-            "timestamp": datetime.utcnow().isoformat(),
+            "event_id": f"evt_{datetime.now().timestamp()}_{random.randint(1000, 9999)}",
+            "timestamp": datetime.now().isoformat(),
             "headline": headline,
             "company": company,
             "location": location,
@@ -179,7 +179,7 @@ class DataIngestionPipeline:
         try:
             while True:
                 events = self.generate_and_publish(count=batch_size)
-                print(f"[{datetime.utcnow().isoformat()}] Generated {len(events)} events")
+                print(f"[{datetime.now().isoformat()}] Generated {len(events)} events")
                 time.sleep(interval_seconds)
         except KeyboardInterrupt:
             print("\nStopped continuous ingestion")

@@ -108,7 +108,7 @@ class BigQueryStorage:
         rows_to_insert = []
         for event in events:
             row = event.copy()
-            row["ingested_at"] = datetime.utcnow().isoformat()
+            row["ingested_at"] = datetime.now().isoformat()
             # Convert timestamp string to proper format
             if "timestamp" in row and isinstance(row["timestamp"], str):
                 row["timestamp"] = row["timestamp"]
@@ -132,7 +132,7 @@ class BigQueryStorage:
         rows_to_insert = []
         for event in events:
             row = event.copy()
-            row["analyzed_at"] = datetime.utcnow().isoformat()
+            row["analyzed_at"] = datetime.now().isoformat()
             # Ensure JSON fields are strings
             if "entities" in row and not isinstance(row["entities"], str):
                 row["entities"] = json.dumps(row["entities"])
